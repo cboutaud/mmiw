@@ -6,7 +6,7 @@ csv_reader = csv.DictReader(inputfile)
 inputfile2 = open('census.csv', 'rU')
 csv_reader2 = list(csv.DictReader(inputfile2))
 
-# caracter encoding verification
+#encoding verification
 # with open('census.csv') as f:
 #     for line in f:
 #         print repr(line)
@@ -15,9 +15,12 @@ csv_reader2 = list(csv.DictReader(inputfile2))
 # print data.count('\x00')
 
 count = 0
+countthis = 0
 
 for row in csv_reader:
 	loc = row['loc']
+	if loc == "Edmonton":
+		countthis +=1
 	for row in csv_reader2:
 		found = False
 		if row['Geographic name'] == loc:
@@ -29,3 +32,4 @@ for row in csv_reader:
 		count +=1
 
 print(count)
+print(countthis)
